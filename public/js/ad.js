@@ -1,7 +1,8 @@
-$('#add_image').click(function () {
+$('#add-image').click(function(){
     // Je récupère le numéro des futurs champs que je vais créer
-    // const index = $('#ad_images div.form-group').length;
     const index = +$('#widgets-counter').val();
+
+    console.log(index);
 
     // Je récupère le prototype des entrées
     const tmpl = $('#ad_images').data('prototype').replace(/__name__/g, index);
@@ -11,22 +12,24 @@ $('#add_image').click(function () {
 
     $('#widgets-counter').val(index + 1);
 
-    // je gère le button supprimer
+    // Je gère le button supprimer
     handleDeleteButtons();
-});
+  });
 
-function handleDeleteButtons() {
-    $('button[data-action="delete"]').click(function () {
-        const target = this.dataset.target;
-        $(target).remove();
+  function handleDeleteButtons()
+  {
+    $('button[data-action="delete"]').click(function(){
+      const target = this.dataset.target;
+      $(target).remove();
     });
-}
+  }
 
-function UpdateCounter() {
+  function updateCounter()
+  {
     const count = +$('#ad_images div.form-group').length;
 
     $('#widgets-counter').val(count);
-}
+  }
 
-UpdateCounter();
-handleDeleteButtons();
+  updateCounter();
+  handleDeleteButtons();
