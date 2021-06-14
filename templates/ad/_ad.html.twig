@@ -2,9 +2,7 @@
 <div class="col-md-4">
 	<div class="card bg-light mb-3">
 		<div class="card-header text-center">
-			{{ad.rooms}},
-			<strong>{{ad.price}}&euro; / nuit</strong>
-			<br>
+			{{ad.rooms}} chambres, <strong>{{ad.price}}&euro; / nuit</strong><br>
 			<small>Pas encore noté</small>
 		</div>
 
@@ -20,6 +18,9 @@
 				{{ad.introduction}}
 			</p>
 			<a href="{{ url }}" class="btn btn-secondary">En voir plus !</a>
+			{% if app.user and app.user == ad.author %}
+				<a href="{{path('ads_edit', {'slug': ad.slug})}}" class="btn btn-secondary">Modifier l'annonce</a>	
+			{% endif %}
 		</div>
 	</div>
 </div>
